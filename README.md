@@ -3,6 +3,9 @@
 CodeDuel is a real-time, head-to-head competitive programming platform where developers duel each other to solve algorithmic challenges. Features include real-time waiting rooms, automated ELO rating updates, an integrated compiler editor, high-contrast cream-and-black styling, and personal battle dashboards.
 
 ---
+#Report 
+[Real-Time-Competitive-Coding-Platform.pdf](https://github.com/user-attachments/files/30169557/Real-Time-Competitive-Coding-Platform.pdf)
+
 
 ## ✨ Features
 
