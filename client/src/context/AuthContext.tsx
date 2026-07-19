@@ -6,6 +6,8 @@ import {
 } from "react";
 import type { ReactNode } from "react";
 
+import { getUserProfile } from "../services/userService";
+
 import type { User } from "../types/auth";
 
 interface AuthContextType {
@@ -41,20 +43,41 @@ export const AuthProvider = ({ children }: Props) => {
         return normalized;
     };
 
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        setToken(null);
+        setUser(null);
+    };
+
     useEffect(() => {
-        const savedToken = localStorage.getItem("token");
-        const savedUser = localStorage.getItem("user");
+        const verifySession = async () => {
+            const savedToken = localStorage.getItem("token");
+            const savedUser = localStorage.getItem("user");
 
-        if (savedToken && savedUser) {
-            setToken(savedToken);
-            try {
-                setUser(normalizeUser(JSON.parse(savedUser)));
-            } catch (err) {
-                console.error("Failed to parse user from localStorage:", err);
+            if (savedToken && savedUser) {
+                setToken(savedToken);
+                try {
+                    setUser(normalizeUser(JSON.parse(savedUser)));
+                    const res = await getUserProfile();
+                    if (res && res.success && res.user) {
+                        const freshUser = normalizeUser(res.user);
+                        setUser(freshUser);
+                        localStorage.setItem("user", JSON.stringify(freshUser));
+                    } else {
+                        logout();
+                    }
+                } catch (err) {
+                    console.error("Failed to restore session profile:", err);
+                    logout();
+                }
             }
-        }
 
-        setInitialized(true);
+            setInitialized(true);
+        };
+
+        verifySession();
     }, []);
 
     const login = (token: string, user: User) => {
@@ -66,13 +89,7 @@ export const AuthProvider = ({ children }: Props) => {
         setUser(normalized);
     };
 
-    const logout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
 
-        setToken(null);
-        setUser(null);
-    };
 
     return (
         <AuthContext.Provider

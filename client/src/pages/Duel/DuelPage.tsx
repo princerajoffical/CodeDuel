@@ -186,9 +186,12 @@ const DuelPage = () => {
     }, [roomCode, user]);
 
     const handleQuitMatch = () => {
-        const confirmQuit = window.confirm("Are you sure you want to quit the match? This will forfeit the match!");
+        const confirmQuit = window.confirm("Are you sure you want to leave the match? This will forfeit the match!");
         if (confirmQuit && roomCode) {
             socket.emit("leave-room", { roomCode });
+            socket.off("connect");
+            socket.off("match-end");
+            socket.off("room-update");
             socket.disconnect();
             navigate("/dashboard");
         }
@@ -304,6 +307,14 @@ const DuelPage = () => {
                         hostId={roomConfig.host._id}
                         currentUserId={user?.id}
                     />
+                    <Button 
+                        onClick={handleQuitMatch}
+                        variant="secondary" 
+                        size="sm"
+                        className="text-xs text-red-650 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950/20 border-border-primary shrink-0 font-bold"
+                    >
+                        Leave Match
+                    </Button>
                 </div>
             </header>
 
