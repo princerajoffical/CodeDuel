@@ -18,8 +18,11 @@ app.use('/room', require('./routes/roomRoutes'));
 
 app.use('/api/judge', require('./routes/judgeRoutes'));
 app.use('/judge', require('./routes/judgeRoutes'));
-//Test route
-app.get('/',(req,res)=>{
-    res.send("server is running");
-})
+app.get("/health-check-123", (req, res) => {
+    res.json({
+        success: true,
+        message: "THIS IS MY LATEST CODE"
+    });
+});
+
 module.exports=app;
