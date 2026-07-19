@@ -25,4 +25,8 @@ app.get("/health-check-123", (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("server is running");
+});
+
 module.exports=app;
