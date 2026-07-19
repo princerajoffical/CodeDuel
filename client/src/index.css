@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #FFFDF2;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --border: #E8E5D5;
+  --text-primary: #000000;
+  --text-secondary: #5C5A52;
+  --accent: #8E7355;
+  --accent-hover: #755E45;
+  --accent-light: #F4EFE3;
+}
+
+.dark {
+  --background: #000000;
+  --surface: #0C0C0C;
+  --card: #0C0C0C;
+  --border: #222220;
+  --text-primary: #FFFDF2;
+  --text-secondary: #9E9C93;
+  --accent: #C5A880;
+  --accent-hover: #E0C7A3;
+  --accent-light: #161514;
+}
+
+@theme {
+  --font-display: 'Geist', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --color-primary: var(--accent);
+  --color-primary-hover: var(--accent-hover);
+  --color-primary-light: var(--accent-light);
+  --color-border-primary: var(--border);
+  --color-bg-primary: var(--surface);
+  --color-bg-secondary: var(--background);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  
+  --shadow-premium: 0 1px 2px 0 rgba(0, 0, 0, 0.02), 0 4px 12px 0 rgba(0, 0, 0, 0.03);
+  --shadow-premium-hover: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 12px 24px -4px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  --shadow-premium-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+/* Custom premium elements */
+.premium-grid {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar for premium look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+  opacity: 0.5;
+}
+
+/* Custom animations utilities */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}

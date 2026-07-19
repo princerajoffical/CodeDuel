@@ -1,0 +1,42 @@
+# ==========================================
+# CodeDuel Git Ignore Rules
+# ==========================================
+
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+node_modules_old/
+
+# Environment Configuration
+.env
+.env.*
+!.env.example
+client/.env
+server/.env
+
+# Build Outputs
+dist/
+client/dist/
+build/
+coverage/
+
+# IDE / System Settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs and debug files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
