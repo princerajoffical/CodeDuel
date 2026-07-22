@@ -4,7 +4,8 @@ CodeDuel is a real-time, head-to-head competitive programming platform where dev
 
 ---
 #Report 
-[Real-Time-Competitive-Coding-Platform.pdf](https://github.com/user-attachments/files/30169557/Real-Time-Competitive-Coding-Platform.pdf)
+[CODEDUEL REPORT.pdf](https://github.com/user-attachments/files/30274703/CODEDUEL.REPORT.pdf)
+
 
 
 ## ✨ Features
